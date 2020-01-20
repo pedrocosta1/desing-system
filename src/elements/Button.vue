@@ -1,6 +1,6 @@
 <template>
   <component :is="type" :href="href" :type="submit" :class="['button', size, state, variation]">
-    <slot/>
+    <slot />
   </component>
 </template>
 
@@ -164,9 +164,6 @@ export default {
     }
     &:focus {
       outline: 0;
-    }
-    .user-is-tabbing &:focus,
-    &.focus {
     }
   }
 }

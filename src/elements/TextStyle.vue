@@ -1,6 +1,6 @@
 <template>
-  <component :is="type" :class="['text-style', variation]">
-    <slot/>
+  <component :is="type" :class="['text-style', variation, color]">
+    <slot />
   </component>
 </template>
 
@@ -37,6 +37,13 @@ export default {
         return value.match(/(default|disabled|strong|positive|negative)/)
       },
     },
+    color: {
+      type: String,
+      default: "black",
+      validator: value => {
+        return value.match(/(default|white|red)/)
+      },
+    },
   },
 }
 </script>
@@ -69,9 +76,17 @@ $positive-text: #7cb518;
   &.negative {
     color: $color-vermilion;
   }
+  &.red {
+    color: $color-vermilion;
+  }
+  &.black {
+    color: $color-rich-black;
+  }
+  &.white {
+    color: $color-cloud;
+  }
 }
 </style>
-
 
 <docs>
   ```jsx
@@ -81,6 +96,8 @@ $positive-text: #7cb518;
     <TextStyle variation="disabled">Design isn’t just about</TextStyle>
     <br />
     <TextStyle variation="strong">Design isn’t</TextStyle>
+    <br />
+    <TextStyle variation="strong" color="black">Design isn’t</TextStyle>
   </div>
   ```
 </docs>

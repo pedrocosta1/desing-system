@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :aria-label="ariaLabel" :class="['icon', size]" v-html="svg"/>
+  <component :is="type" :aria-label="ariaLabel" :class="['icon', size, rotate]" v-html="svg" />
 </template>
 
 <script>
@@ -54,6 +54,17 @@ export default {
         return value.match(/(small|medium|large)/)
       },
     },
+    /**
+     * The rotate of the icon. Defaults to right.
+     * `normal, left, up, down`
+     */
+    rotate: {
+      type: String,
+      default: "normal",
+      validator: value => {
+        return value.match(/(normal|left|up|down)/)
+      },
+    },
   },
   data() {
     return {
@@ -84,6 +95,15 @@ export default {
     width: $space-s;
     height: $space-s;
   }
+  &.left svg {
+    transform: rotate(180deg);
+  }
+  &.up svg {
+    transform: rotate(-90deg);
+  }
+  &.down svg {
+    transform: rotate(90deg);
+  }
 }
 </style>
 
@@ -94,6 +114,24 @@ export default {
     <Icon name="review" fill="rgb(255,186,10)" />
     <Icon name="deprecated" fill="rgb(235,59,36)" />
     <Icon name="prototype" fill="rgb(37,138,239)" />
+    <Icon name="add" fill="rgb(37,138,239)" />
+    <Icon name="angle" rotate="up" fill="rgb(37,138,239)" />
+    <Icon name="angle" fill="#c1c1c1" />
+    <Icon name="angle" rotate="left" fill="rgb(37,138,239)" />
+    <Icon name="angle" rotate="down" fill="rgb(37,138,239)" />
+    <Icon name="client" fill="rgb(37,138,239)" />
+    <Icon name="dashboard" fill="rgb(37,138,239)" />
+    <Icon name="close" fill="rgb(37,138,239)" />
+    <Icon name="edit" fill="rgb(37,138,239)" />
+    <Icon name="field" fill="rgb(37,138,239)" />
+    <Icon name="info" fill="rgb(37,138,239)" />
+    <Icon name="log" fill="rgb(37,138,239)" />
+    <Icon name="out" fill="rgb(37,138,239)" />
+    <Icon name="random" fill="rgb(37,138,239)" />
+    <Icon name="search" fill="rgb(37,138,239)" />
+    <Icon name="spinner" fill="rgb(37,138,239)" />
+    <Icon name="view" fill="rgb(37,138,239)" />
+    <Icon name="warning" fill="rgb(37,138,239)" />
   </div>
   ```
 </docs>
